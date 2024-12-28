@@ -1,23 +1,18 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
+#include "Header/Core/GameWindowManager.h"
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+using namespace sf;
+using namespace Core;
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+int main() {
+    // Create our window manager instance
+    GameWindowManager gameWindowManager;
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+    // Initialize the window
+    gameWindowManager.initialize();
+
+    while (gameWindowManager.isGameRunning()) {
+        gameWindowManager.render();
     }
+
+    return 0;
 }
