@@ -28,8 +28,12 @@ namespace Gameplay
         pong_ball_sprite.setPosition(position_x, position_y); // Set position
     }
 
-    void Ball::update() {
+    void Ball::move() {
+        pong_ball_sprite.move(velocity);
+    }
 
+    void Ball::update() {
+        move();
     }
 
 }
