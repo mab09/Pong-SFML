@@ -12,8 +12,7 @@ using namespace std;
 
 namespace Core
 {
-	class GameLoop
-	{
+	class GameLoop {
 	private:
 		GameWindowManager* game_window_manager;
 		EventManager* event_manager;

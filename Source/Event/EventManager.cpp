@@ -17,8 +17,7 @@ namespace Event
             }
 
             // Handle left mouse button click
-            if (isLeftMouseButtonClicked())
-            {
+            if (isLeftMouseButtonClicked()) {
                 sf::Vector2i position = sf::Mouse::getPosition(*game_window);
 
                 // Log the mouse position
