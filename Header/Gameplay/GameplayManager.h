@@ -1,4 +1,5 @@
 #pragma once
+#include "Boundary/Boundary.h"
 #include "Paddle/Paddle.h"
 #include "Ball/Ball.h"
 #include "../Event/EventManager.h"
@@ -15,6 +16,7 @@ namespace Gameplay
 		float player2_postion_x = 2500.0f;
 		float player2_postion_y = 700.0f;
 
+		Boundary* boundary;
 		Ball* ball;
 		Paddle* player1;
 		Paddle* player2;
