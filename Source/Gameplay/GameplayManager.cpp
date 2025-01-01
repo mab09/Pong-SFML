@@ -22,7 +22,7 @@ namespace Gameplay
 	}
 
     void GameplayManager::update() {
-		ball->update();
+		ball->update(player1, player2);
 
 		player1->update(event_manager->isKeyPressed(Keyboard::W),
 			event_manager->isKeyPressed(Keyboard::S));

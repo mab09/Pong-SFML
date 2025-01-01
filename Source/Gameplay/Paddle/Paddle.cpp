@@ -31,15 +31,19 @@ namespace Gameplay
 
     void Paddle::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed) {
         //move up
-        if (move_up_key_pressed)
+        if (move_up_key_pressed && pong_paddle_sprite.getPosition().y > top_boundary)
         {
             pong_paddle_sprite.move(0, -paddleSpeed);
         }
         //move down
-        if (move_down_key_pressed)
+        if (move_down_key_pressed && pong_paddle_sprite.getPosition().y + paddle_sprite.getSize().y < bottom_boundary)
         {
             pong_paddle_sprite.move(0, paddleSpeed);
         }
+    }
+
+    Sprite Paddle::getPaddleSprite() {
+        return pong_paddle_sprite;
     }
 
     void Paddle::update(bool move_up_key_pressed, bool move_down_key_pressed) {
