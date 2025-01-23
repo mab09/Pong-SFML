@@ -27,6 +27,21 @@ namespace Gameplay
 		ui_service->render(game_window);
 	}
 
+
+	void GameplayManager::UpdateScore() {
+		// Left side out - Player 2 scores!
+		if (ball->isLeftCollisionOccurred()) {
+			ui_service->incrementPlayer2Score();
+			ball->updateLeftCollisionState(false);
+		}
+
+		// Right side out - Player 1 scores!
+		if (ball->isRightCollisionOccurred()) {
+			ui_service->incrementPlayer1Score();
+			ball->updateRightCollisionState(false);
+		}
+	}
+
     void GameplayManager::update() {
 		time_service->update();
 		
@@ -35,6 +50,8 @@ namespace Gameplay
 		player1->update(event_manager->isKeyPressed(Keyboard::W), event_manager->isKeyPressed(Keyboard::S), time_service);
 		player2->update(event_manager->isKeyPressed(Keyboard::Up), event_manager->isKeyPressed(Keyboard::Down), time_service);
 
-    }
+		UpdateScore();       // Check for scoring events
+		ui_service->update(); // Update score display
 
+    }
 }

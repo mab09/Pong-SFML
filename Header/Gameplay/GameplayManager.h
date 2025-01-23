@@ -30,6 +30,7 @@ namespace Gameplay
 		UIService* ui_service;
 
 		void initialize();
+		void UpdateScore();
 
 	public:
 		GameplayManager(EventManager* manager);

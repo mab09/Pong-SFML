@@ -45,6 +45,9 @@ namespace Gameplay
         float delay_duration = 5.0f;
         float elapsed_delay_time = 0.0f;
 
+        bool had_left_collison = false;
+        bool had_right_collison = false;
+
         void loadTexture();
         void initializeVariables();
         void move(TimeService* time_service);
@@ -61,5 +64,11 @@ namespace Gameplay
         Ball();
         void update(Paddle* player1, Paddle* player2, TimeService* time_service);
         void render(RenderWindow* game_window);
+
+        bool isLeftCollisionOccurred();
+        void updateLeftCollisionState(bool value);
+
+        bool isRightCollisionOccurred();
+        void updateRightCollisionState(bool value);
     };
 }
