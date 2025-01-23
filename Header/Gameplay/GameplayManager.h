@@ -3,8 +3,10 @@
 #include "Paddle/Paddle.h"
 #include "Ball/Ball.h"
 #include "../Event/EventManager.h"
+#include "../Utility/TimeService.h"
 
 using namespace Event;
+using namespace Utility;
 
 namespace Gameplay
 {
@@ -22,6 +24,7 @@ namespace Gameplay
 		Paddle* player2;
 
 		EventManager* event_manager;
+		TimeService* time_service;
 
 		void initialize();
 

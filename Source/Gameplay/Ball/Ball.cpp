@@ -27,8 +27,9 @@ namespace Gameplay
         pong_ball_sprite.setPosition(position_x, position_y); // Set position
     }
 
-    void Ball::move() {
-        pong_ball_sprite.move(velocity);
+    void Ball::move(Utility::TimeService* time_service) {
+        int speedMultiplier = 5000;
+        pong_ball_sprite.move(velocity * (time_service->getDeltaTime() * speedMultiplier));
     }
 
     void Ball::handlePaddleCollision(Paddle* player1, Paddle* player2) {
@@ -80,8 +81,8 @@ namespace Gameplay
         velocity = Vector2f(ball_speed, ball_speed);
     }
 
-    void Ball::update(Paddle* player1, Paddle* player2) {
-        move();
+    void Ball::update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service) {
+        move(time_service);
         onCollision(player1, player2);
     }
 
