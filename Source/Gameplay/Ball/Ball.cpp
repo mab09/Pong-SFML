@@ -16,8 +16,7 @@ namespace Gameplay
     }
 
     void Ball::loadTexture() {
-        if (!pong_ball_texture.loadFromFile(texture_path))
-        {
+        if (!pong_ball_texture.loadFromFile(texture_path)) {
             throw std::runtime_error("Failed to load ball texture!");
         }
     }
@@ -43,12 +42,10 @@ namespace Gameplay
         FloatRect player2_bounds = player2Paddle.getGlobalBounds();
 
         // 3. Handle collisions
-        if (ball_bounds.intersects(player1_bounds) && velocity.x < 0)
-        {
+        if (ball_bounds.intersects(player1_bounds) && velocity.x < 0) {
             velocity.x = -velocity.x;  // Bounce!
         }
-        if (ball_bounds.intersects(player2_bounds) && velocity.x > 0)
-        {
+        if (ball_bounds.intersects(player2_bounds) && velocity.x > 0) {
             velocity.x = -velocity.x;  // Reverse horizontal direction
         }
     }
@@ -56,9 +53,7 @@ namespace Gameplay
     void Ball::handleBoundaryCollision() {
         FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
 
-        if ((ball_bounds.top <= top_boundary && velocity.y < 0) ||
-            (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0))
-        {
+        if ((ball_bounds.top <= top_boundary && velocity.y < 0) || (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0)) {
             velocity.y = -velocity.y;  // Reverse vertical direction
         }
     }

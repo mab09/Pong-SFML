@@ -16,8 +16,7 @@ namespace Gameplay
     }
 
     void Paddle::loadTexture() {
-        if (!pong_paddle_texture.loadFromFile(texture_path))
-        {
+        if (!pong_paddle_texture.loadFromFile(texture_path)) {
             throw std::runtime_error("Failed to load ball texture!");
         }
     }
@@ -31,13 +30,11 @@ namespace Gameplay
 
     void Paddle::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed) {
         //move up
-        if (move_up_key_pressed && pong_paddle_sprite.getPosition().y > top_boundary)
-        {
+        if (move_up_key_pressed && pong_paddle_sprite.getPosition().y > top_boundary) {
             pong_paddle_sprite.move(0, -paddleSpeed);
         }
         //move down
-        if (move_down_key_pressed && pong_paddle_sprite.getPosition().y + paddle_sprite.getSize().y < bottom_boundary)
-        {
+        if (move_down_key_pressed && pong_paddle_sprite.getPosition().y + paddle_sprite.getSize().y < bottom_boundary) {
             pong_paddle_sprite.move(0, paddleSpeed);
         }
     }
