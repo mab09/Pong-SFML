@@ -4,9 +4,11 @@
 #include "Ball/Ball.h"
 #include "../Event/EventManager.h"
 #include "../Utility/TimeService.h"
+#include "../UI/UIService.h"
 
 using namespace Event;
 using namespace Utility;
+using namespace UI;
 
 namespace Gameplay
 {
@@ -25,6 +27,7 @@ namespace Gameplay
 
 		EventManager* event_manager;
 		TimeService* time_service;
+		UIService* ui_service;
 
 		void initialize();
 
