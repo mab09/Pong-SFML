@@ -28,14 +28,17 @@ namespace Gameplay
         pong_paddle_sprite.setRotation(90); //Make them verticle
     }
 
-    void Paddle::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed) {
+    void Paddle::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed, Utility::TimeService* time_service) {
+
+        int speedMultiplier = 5000;
+
         //move up
         if (move_up_key_pressed && pong_paddle_sprite.getPosition().y > top_boundary) {
-            pong_paddle_sprite.move(0, -paddleSpeed);
+            pong_paddle_sprite.move(0, -paddleSpeed * time_service->getDeltaTime() * speedMultiplier);
         }
         //move down
         if (move_down_key_pressed && pong_paddle_sprite.getPosition().y + paddle_sprite.getSize().y < bottom_boundary) {
-            pong_paddle_sprite.move(0, paddleSpeed);
+            pong_paddle_sprite.move(0, paddleSpeed * time_service->getDeltaTime() * speedMultiplier);
         }
     }
 
@@ -43,9 +46,9 @@ namespace Gameplay
         return pong_paddle_sprite;
     }
 
-    void Paddle::update(bool move_up_key_pressed, bool move_down_key_pressed) {
+    void Paddle::update(bool move_up_key_pressed, bool move_down_key_pressed, Utility::TimeService* time_service) {
 
-        movePaddle(move_up_key_pressed, move_down_key_pressed);
+        movePaddle(move_up_key_pressed, move_down_key_pressed, time_service);
 
     }
 
