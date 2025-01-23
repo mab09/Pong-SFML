@@ -31,7 +31,7 @@ namespace Gameplay
     void Ball::move(Utility::TimeService* time_service) {
         updateDelayTime(time_service->getDeltaTime());
 
-        int speedMultiplier = 5000;
+        int speedMultiplier = 10000;
         if (current_state == BallState::Idle) pong_ball_sprite.move(Vector2f(0,0));
         if (current_state == BallState::Moving) pong_ball_sprite.move(velocity * (time_service->getDeltaTime() * speedMultiplier));
     }

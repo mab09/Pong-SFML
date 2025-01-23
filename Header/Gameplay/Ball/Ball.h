@@ -42,7 +42,7 @@ namespace Gameplay
         const float center_position_x = 1230.0f;
         const float center_position_y = 650.0f;
 
-        float delay_duration = 5.0f;
+        float delay_duration = 3.0f;
         float elapsed_delay_time = 0.0f;
 
         bool had_left_collison = false;
