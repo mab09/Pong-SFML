@@ -16,8 +16,7 @@ namespace Gameplay
     }
 
     void Paddle::loadTexture() {
-        if (!pong_paddle_texture.loadFromFile(texture_path))
-        {
+        if (!pong_paddle_texture.loadFromFile(texture_path)) {
             throw std::runtime_error("Failed to load ball texture!");
         }
     }
@@ -29,7 +28,24 @@ namespace Gameplay
         pong_paddle_sprite.setRotation(90); //Make them verticle
     }
 
-    void Paddle::update() {
+    void Paddle::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed) {
+        //move up
+        if (move_up_key_pressed && pong_paddle_sprite.getPosition().y > top_boundary) {
+            pong_paddle_sprite.move(0, -paddleSpeed);
+        }
+        //move down
+        if (move_down_key_pressed && pong_paddle_sprite.getPosition().y + paddle_sprite.getSize().y < bottom_boundary) {
+            pong_paddle_sprite.move(0, paddleSpeed);
+        }
+    }
+
+    Sprite Paddle::getPaddleSprite() {
+        return pong_paddle_sprite;
+    }
+
+    void Paddle::update(bool move_up_key_pressed, bool move_down_key_pressed) {
+
+        movePaddle(move_up_key_pressed, move_down_key_pressed);
 
     }
 
