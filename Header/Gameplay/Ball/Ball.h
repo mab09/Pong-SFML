@@ -11,6 +11,11 @@ using namespace Utility;
 
 namespace Gameplay
 {
+    enum class BallState {
+        Idle,
+        Moving
+    };
+
     class Ball {
     private:
         Texture pong_ball_texture;
@@ -37,6 +42,9 @@ namespace Gameplay
         const float center_position_x = 1230.0f;
         const float center_position_y = 650.0f;
 
+        float delay_duration = 5.0f;
+        float elapsed_delay_time = 0.0f;
+
         void loadTexture();
         void initializeVariables();
         void move(TimeService* time_service);
@@ -45,6 +53,9 @@ namespace Gameplay
         void handleBoundaryCollision();
         void handleOutofBoundCollision();
         void reset();
+
+        void updateDelayTime(float deltaTime);
+        BallState current_state;
 
     public:
         Ball();
