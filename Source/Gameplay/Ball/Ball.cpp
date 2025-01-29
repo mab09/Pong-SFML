@@ -31,7 +31,7 @@ namespace Gameplay
     void Ball::move(Utility::TimeService* time_service) {
         updateDelayTime(time_service->getDeltaTime());
 
-        int speedMultiplier = 5000;
+        int speedMultiplier = 10000;
         if (current_state == BallState::Idle) pong_ball_sprite.move(Vector2f(0,0));
         if (current_state == BallState::Moving) pong_ball_sprite.move(velocity * (time_service->getDeltaTime() * speedMultiplier));
     }
@@ -67,9 +67,11 @@ namespace Gameplay
         FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
 
         if (ball_bounds.left <= left_boundary) {
+            updateLeftCollisionState(true);
             reset();        // Player 2 scores!
         }
         else if (ball_bounds.left + ball_bounds.width >= right_boundary) {
+            updateRightCollisionState(true);
             reset();        // Player 1 scores!
         }
     }
@@ -78,6 +80,22 @@ namespace Gameplay
         handleBoundaryCollision();
         handlePaddleCollision(player1, player2);
         handleOutofBoundCollision();
+    }
+
+    bool Ball::isLeftCollisionOccurred() {
+        return had_left_collison;
+    }
+
+    void Ball::updateLeftCollisionState(bool value) {
+        had_left_collison = value;
+    }
+
+    bool Ball::isRightCollisionOccurred() {
+        return had_right_collison;
+    }
+
+    void Ball::updateRightCollisionState(bool value) {
+        had_right_collison = value;
     }
 
     void Ball::reset() {
@@ -96,7 +114,6 @@ namespace Gameplay
             }
         }
     }
-
 
     void Ball::update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service) {
         move(time_service);
