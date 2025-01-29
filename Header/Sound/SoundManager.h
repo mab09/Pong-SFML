@@ -23,7 +23,6 @@ namespace Sound
 
     public:
         SoundManager();
-        ~SoundManager();
 
         static void PlaySoundEffect(SoundType soundType);
         static void PlayBackgroundMusic();
