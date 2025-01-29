@@ -28,7 +28,7 @@ namespace Gameplay
         pong_ball_sprite.setPosition(position_x, position_y); // Set position
     }
 
-    void Ball::move(Utility::TimeService* time_service) {
+    void Ball::move(TimeService* time_service) {
         updateDelayTime(time_service->getDeltaTime());
 
         int speedMultiplier = 10000;
@@ -49,9 +49,11 @@ namespace Gameplay
         // 3. Handle collisions
         if (ball_bounds.intersects(player1_bounds) && velocity.x < 0) {
             velocity.x = -velocity.x;  // Bounce!
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
         }
         if (ball_bounds.intersects(player2_bounds) && velocity.x > 0) {
             velocity.x = -velocity.x;  // Reverse horizontal direction
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
         }
     }
 
@@ -60,6 +62,7 @@ namespace Gameplay
 
         if ((ball_bounds.top <= top_boundary && velocity.y < 0) || (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0)) {
             velocity.y = -velocity.y;  // Reverse vertical direction
+            SoundManager::PlaySoundEffect(SoundType::BALL_BOUNCE);
         }
     }
 
@@ -115,7 +118,7 @@ namespace Gameplay
         }
     }
 
-    void Ball::update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service) {
+    void Ball::update(Paddle* player1, Paddle* player2, TimeService* time_service) {
         move(time_service);
         onCollision(player1, player2);
     }
