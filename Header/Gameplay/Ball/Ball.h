@@ -4,10 +4,12 @@
 #include <string>
 
 #include "../../Utility/TimeService.h"
+#include "../../Sound/SoundManager.h"
 
 using namespace sf;
 using namespace std;
 using namespace Utility;
+using namespace Sound;
 
 namespace Gameplay
 {
